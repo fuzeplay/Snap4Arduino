@@ -1,6 +1,6 @@
 {
-    "name": "Snap4Arduino connector",
-    "description": "Connect Berkeley Snap! to Arduino boards",
+    "name": "Snap4Fuze connector",
+    "description": "Connect Berkeley Snap! to Fuze boards",
     "version": "0.1",
     "manifest_version": 2,
     "app": {
@@ -17,6 +17,7 @@
             "http://arduino.org/*",
             "http://46.140.176.36/*",
             "http://localhost:8080/*",
+            "http://localhost:3000/*",
             "http://localhost/*",
             "http://snap4arduino.local/*",
             "http://snap4arduino.org/*",
