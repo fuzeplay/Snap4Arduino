@@ -14,6 +14,24 @@ SpriteMorph.prototype.blockColor['zubi Flyer'] = new Color(103, 190, 43);
 SpriteMorph.prototype.originalInitBlocks = SpriteMorph.prototype.initBlocks;
 SpriteMorph.prototype.initFuziBlocks = function () {
 
+    this.blocks.reportAnalogReading =
+    {
+        only: SpriteMorph,
+        type: 'reporter',
+        category: 'zubi Flyer',
+        spec: 'analog reading %analogPin',
+        transpilable: true
+    };
+
+    this.blocks.reportDigitalReading =
+    {
+        only: SpriteMorph,
+        type: 'predicate',
+        category: 'zubi Flyer',
+        spec: 'digital reading %digitalPin',
+        transpilable: true
+    };
+
     this.blocks.connectArduino =
     {
         only: SpriteMorph,
@@ -66,7 +84,7 @@ SpriteMorph.prototype.initFuziBlocks = function () {
         type: 'command',
         category: 'zubi Flyer',
         spec: 'set pin %pwmPin to value %n',
-	defaults: [null, 128],
+	    defaults: [null, 128],
         transpilable: true
     };
 
@@ -328,6 +346,9 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     if (category === 'zubi Flyer') {
 
+        blocks.push(this.arduinoConnectButton);
+        blocks.push(this.arduinoDisconnectButton);
+        blocks.push('-');
         blocks.push(blockBySelector('connectArduino'));
         blocks.push(blockBySelector('disconnectArduino'));
         blocks.push('-');
@@ -335,9 +356,6 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(blockBySelector('zubiLightSensorWhen'));
         blocks.push(blockBySelector('zubiLightSensorReadInput'));
-        blocks.push(blockBySelector('servoWrite'));
-        blocks.push(blockBySelector('digitalWrite'));
-        blocks.push(blockBySelector('pwmWrite'));
         blocks.push('-');
         blocks.push(blockBySelector('zubiSetLedToColor'));
         blocks.push(blockBySelector('zubiSetAllLedsToColor'));
