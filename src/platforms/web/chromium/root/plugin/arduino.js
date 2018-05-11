@@ -110,6 +110,8 @@ Arduino.prototype.populateBoard = function (board) {
     board.getAnalogPinValue = function (aPin) { postal.sendCommand('getAnalogPinValue', [board.id, aPin], function (response) { board.pins[aPin].value = response; board.pins[aPin].report = 2;}); };
     board.getArduinoBoardParam = function (name) {postal.sendCommand('getArduinoBoardParam', [board.id, name], function (response) { board[name] = response;}); };
 
+    //Fuze
+    board.setLEDStripColor = function (ledPin, colorCode) {postal.sendCommand('setLEDColor', [board.id, ledPin, colorCode]); };
 };
 
 // Fake Buffer definition, needed by some Firmata extensions
