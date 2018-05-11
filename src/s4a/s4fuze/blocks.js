@@ -1,5 +1,3 @@
-//This isn't used in s4fuze, the blocks.js file in s4fuze is instead
-
 // labelPart() proxy
 
 SyntaxElementMorph.prototype.originalLabelPart = SyntaxElementMorph.prototype.labelPart;
@@ -124,6 +122,68 @@ SyntaxElementMorph.prototype.labelPart = function(spec) {
             part.originalChanged = part.changed;
             part.changed = function () { part.originalChanged(); if (block.toggle) { block.toggle.refresh(); } };
             break;
+
+        // Fuze Inputs
+        case '%button':
+            part = new InputSlotMorph(
+                null,
+                false,
+                {
+                    'triangle button' : ['triangle'],
+                    'square button' : ['square'],
+                    'circle button' : ['circle'],
+                    'button one' : ['button one'],
+                    'button two' : ['button two'],
+                    'button three' : ['button three']
+                },
+                true
+            );
+            break;
+
+        case '%btnState':
+            part = new InputSlotMorph(
+                null,
+                false,
+                {
+                    'pressed' : ['pressed'],
+                    'released' : ['released']
+                },
+                true
+            );
+            break;
+
+        case '%ledColor':
+            part = new InputSlotMorph(
+                null,
+                false,
+                {
+                    'red' : ['red'],
+                    'green' : ['green'],
+                    'blue' : ['blue'],
+                    'purple' : ['purple'],
+                    'turquoise' : ['turquoise'],
+                    'white' : ['white'],
+                    'pink' : ['pink']
+                },
+                true
+            );
+            break;
+
+        case '%ops':
+            part = new InputSlotMorph(
+                null,
+                false,
+                {
+                    '>' : ['>'],
+                    '<' : ['<'],
+                    '==' : ['=='],
+                    '>=' : ['>='],
+                    '<=' : ['<=']
+                },
+                true
+            );
+            break;
+
         default:
             part = this.originalLabelPart(spec);
     }

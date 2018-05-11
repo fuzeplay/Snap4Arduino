@@ -1,5 +1,3 @@
-//This isn't used in s4fuze, the objects.js file in s4fuze is instead
-
 // init decorator
 
 SpriteMorph.prototype.originalInit = SpriteMorph.prototype.init;
@@ -8,46 +6,28 @@ SpriteMorph.prototype.init = function(globals) {
     this.arduino = new Arduino(this);
 };
 
-// Definition of a new Arduino Category
+// Definition of a new Fuze Category
 
-SpriteMorph.prototype.categories.push('arduino');
-SpriteMorph.prototype.blockColor['arduino'] = new Color(24, 167, 181);
+SpriteMorph.prototype.categories.push('zubi Flyer');
+SpriteMorph.prototype.blockColor['zubi Flyer'] = new Color(103, 190, 43);
 
 SpriteMorph.prototype.originalInitBlocks = SpriteMorph.prototype.initBlocks;
-SpriteMorph.prototype.initArduinoBlocks = function () {
-
-    this.blocks.reportAnalogReading = 
-    {
-        only: SpriteMorph,
-        type: 'reporter',
-        category: 'arduino',
-        spec: 'analog reading %analogPin',
-        transpilable: true
-    };
-
-    this.blocks.reportDigitalReading = 
-    {
-        only: SpriteMorph,
-        type: 'predicate',
-        category: 'arduino',
-        spec: 'digital reading %digitalPin',
-        transpilable: true
-    };
+SpriteMorph.prototype.initFuziBlocks = function () {
 
     this.blocks.connectArduino =
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
-        spec: 'connect arduino at %s'
+        category: 'zubi Flyer',
+        spec: 'connect zubi at %s'
     };
 
     this.blocks.disconnectArduino =
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
-        spec: 'disconnect arduino'
+        category: 'zubi Flyer',
+        spec: 'disconnect zubi'
     };
 
     // Keeping this block spec, although it's not used anymore!
@@ -55,7 +35,7 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
+        category: 'zubi Flyer',
         spec: 'setup digital pin %digitalPin as %pinMode',
         defaults: [null, localize('servo')],
         transpilable: true
@@ -65,7 +45,7 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
+        category: 'zubi Flyer',
         spec: 'set digital pin %digitalPin to %b',
         transpilable: true
     };
@@ -74,7 +54,7 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
+        category: 'zubi Flyer',
         spec: 'set servo %servoPin to %servoValue',
         defaults: [null, ['clockwise']],
         transpilable: true
@@ -84,7 +64,7 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     {
         only: SpriteMorph,
         type: 'command',
-        category: 'arduino',
+        category: 'zubi Flyer',
         spec: 'set pin %pwmPin to value %n',
 	defaults: [null, 128],
         transpilable: true
@@ -94,10 +74,80 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     {
         only: SpriteMorph,
         type: 'predicate',
-        category: 'arduino',
-        spec: 'arduino connected?',
+        category: 'zubi Flyer',
+        spec: 'zubi connected?',
         transpilable: false
     };
+
+    // New Zubi Blocks
+
+    this.blocks.zubiButtonState =
+        {
+            only: SpriteMorph,
+            type: 'predicate',
+            category: 'zubi Flyer',
+            spec: '%button pressed?',
+            defaults: [['triangle']],
+            transpilable: true
+        };
+
+    this.blocks.zubiLightSensorWhen =
+        {
+            only: SpriteMorph,
+            type: 'predicate',
+            category: 'zubi Flyer',
+            spec: 'light sensor %ops %n',
+            defaults: [['>'], 50],
+            transpilable: true
+        };
+
+    this.blocks.zubiLightSensorReadInput =
+        {
+            only: SpriteMorph,
+            type: 'reporter',
+            category: 'zubi Flyer',
+            spec: 'read light sensor',
+            transpilable: true
+        };
+
+    this.blocks.zubiSetAllLedsToColor =
+        {
+            only: SpriteMorph,
+            type: 'command',
+            category: 'zubi Flyer',
+            spec: 'set all leds to %ledColor',
+            defaults: [['red']],
+            transpilable: true
+        };
+
+    this.blocks.zubiSetLedToColor =
+        {
+            only: SpriteMorph,
+            type: 'command',
+            category: 'zubi Flyer',
+            spec: 'set led %n to %ledColor',
+            defaults: [0, ['red']],
+            transpilable: true
+        };
+
+    this.blocks.zubiClearAllLeds =
+        {
+            only: SpriteMorph,
+            type: 'command',
+            category: 'zubi Flyer',
+            spec: 'clear all leds',
+            transpilable: true
+        };
+
+    this.blocks.zubiClearLed =
+        {
+            only: SpriteMorph,
+            type: 'command',
+            category: 'zubi Flyer',
+            spec: 'clear led %n',
+            defaults: [0],
+            transpilable: true
+        };
 
     // Ardui... nization? 
     // Whatever, let's dumb this language down:
@@ -173,11 +223,19 @@ SpriteMorph.prototype.initArduinoBlocks = function () {
     StageMorph.prototype.codeMappings['digitalWrite'] = '  s4a.digitalWrite(<#1>, <#2>);';
     StageMorph.prototype.codeMappings['servoWrite'] = '  s4a.servoWrite(<#1>, <#2>);';
     StageMorph.prototype.codeMappings['pwmWrite'] = '  s4a.analogWrite(<#1>, <#2>);';
-}
+
+    //Fuze
+    StageMorph.prototype.codeMappings['zubiButtonState'] = '  s4a.zubiButtonState(<#1>);';
+    StageMorph.prototype.codeMappings['zubiLightSensorReadInput'] = '  s4a.zubiLightSensorReadInput();';
+    StageMorph.prototype.codeMappings['zubiSetAllLedsToColor'] = '  s4a.zubiSetAllLedsToColor(<#1>);';
+    StageMorph.prototype.codeMappings['zubiSetLedToColor'] = '  s4a.zubiSetAllLedToColor(<#1>, <#2>);';
+    StageMorph.prototype.codeMappings['zubiClearAllLeds'] = '  s4a.zubiClearAllLeds();';
+    StageMorph.prototype.codeMappings['zubiClearLed'] = '  s4a.zubiClearLed();';
+};
 
 SpriteMorph.prototype.initBlocks =  function() {
     this.originalInitBlocks();
-    this.initArduinoBlocks();
+    this.initFuziBlocks();
 };
 
 SpriteMorph.prototype.initBlocks();
@@ -196,7 +254,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             function () {
                 myself.arduino.attemptConnection();
             },
-            'Connect Arduino'
+            'Connect Zubi'
             );
 
     //  Button that triggers a disconnection from board
@@ -206,7 +264,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             function () {
                 myself.arduino.disconnect();;
             },
-            'Disconnect Arduino'
+            'Disconnect Zubi'
             );
 
     function arduinoWatcherToggle (selector) {
@@ -268,23 +326,24 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         reportDigital.toggle = digitalToggle;
     }
 
-    if (category === 'arduino') {
-        blocks.push(this.arduinoConnectButton);
-        blocks.push(this.arduinoDisconnectButton);
-        blocks.push('-');
-        blocks.push(blockBySelector('reportConnected'));
-        blocks.push('-');
+    if (category === 'zubi Flyer') {
+
         blocks.push(blockBySelector('connectArduino'));
         blocks.push(blockBySelector('disconnectArduino'));
         blocks.push('-');
+        blocks.push(blockBySelector('zubiButtonState'));
+        blocks.push('-');
+        blocks.push(blockBySelector('zubiLightSensorWhen'));
+        blocks.push(blockBySelector('zubiLightSensorReadInput'));
         blocks.push(blockBySelector('servoWrite'));
         blocks.push(blockBySelector('digitalWrite'));
         blocks.push(blockBySelector('pwmWrite'));
         blocks.push('-');
-        blocks.push(analogToggle);
-        blocks.push(reportAnalog);
-        blocks.push(digitalToggle);
-        blocks.push(reportDigital);
+        blocks.push(blockBySelector('zubiSetLedToColor'));
+        blocks.push(blockBySelector('zubiSetAllLedsToColor'));
+        blocks.push('-');
+        blocks.push(blockBySelector('zubiClearLed'));
+        blocks.push(blockBySelector('zubiClearAllLeds'));
 
     } else if (category === 'other') {
         button = new PushButtonMorph(
