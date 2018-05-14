@@ -27,16 +27,16 @@ IDE_Morph.prototype.snapMenu = function () {
 
     // adding s4a items
     menu.addLine();
-    menu.addItem('About Snap4Arduino...', 'aboutSnap4Arduino');
+    menu.addItem('About Snap4Fuze...', 'aboutSnap4Arduino');
     menu.addLine();
-    menu.addItem('Snap4Arduino website', 
+    menu.addItem('Fuze website',
         function() {
-            window.open('http://snap4arduino.rocks', 'Snap4ArduinoWebsite'); 
+            window.open('https://fuzeplay.io/', 'Fuze Website');
         }
     );
-    menu.addItem('Snap4Arduino repository',
+    menu.addItem('Snap4Fuze repository',
         function () {
-            window.open('http://github.com/bromagosa/Snap4Arduino', 'SnapSource');
+            window.open('https://github.com/fuzeplay/Snap4Fuze', 'Snap4FuzeSource');
         }
     );
 
@@ -163,29 +163,27 @@ IDE_Morph.prototype.aboutSnap4Arduino = function () {
 
     this.getURL('version', function (version) {
         
-        aboutTxt = 'Snap4Arduino ' + version +'\n'
-        + 'http://snap4arduino.rocks\n\n'
-        + 'Copyright \u24B8 2018 Bernat Romagosa\n'
-        + 'http://romagosa.work\n'
-        + 'bernat@snap4arduino.rocks\n'
+        aboutTxt = 'Snap4Fuze ' + version +'\n'
+        + 'https://fuzeplay.io/\n\n'
+        + 'Copyright \u24B8 2018 Fuze Play\n'
+        + 'kyle@fuzeplay.io\n\n'
+
+        + 'Snap4Fuze is based (heavily) on Snap4Arduino\n'
 
         + 'Copyright \u24B8 2016 Bernat Romagosa and Arduino.org\n'
-
-        + 'Arduino.org supported the development and maintenance\n'
-        + 'of Snap4Arduino from June 2016 until August 2017.\n\n'
-
-        + 'Copyright \u24B8 2015 Citilab\n'
-        + 'edutec@citilab.eu\n\n'
 
         + 'Snap4Arduino is a modification of Snap! originally developed\n'
         + 'by the Edutec research group at the Citilab, Cornellà de\n'
         + 'Llobregat (Barcelona).'
 
-        dlg.inform('About Snap4Arduino', aboutTxt, world);
+        dlg.inform('About Snap4Fuze', aboutTxt, world);
     });
     
     creditsTxt = localize('Contributors')
-        + '\n\nErnesto Laval: MacOSX version, architectural decisions,\n'
+        + '\n\nSnap4Fuze:'
+        + '\nJordan Rejaud\n'
+        + '\n\nSnap4Arduino:'
+        + '\nErnesto Laval: MacOSX version, architectural decisions,\n'
         + 'several features and bugfixes, Spanish translation\n'
         + 'José García, Joan Güell and Víctor Casado: SnapJr mode,\n'
         + 'architectural decisions, several bug reports, testing and\n'

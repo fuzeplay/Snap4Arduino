@@ -332,7 +332,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
                 myself.hideMessage();
                 myself.board.getArduinoBoardParam = nop;
 
-                ide.inform(myself.owner.name, localize('An Arduino board has been connected. Happy prototyping!'));   
+                ide.inform(myself.owner.name, localize('A Zubi Flyer board has been connected. Happy prototyping!'));
             } else {
                 fail(err);
             }
@@ -348,7 +348,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
                 myself.hideMessage();
                 ide.inform(
                         myself.owner.name,
-                        localize('Could not talk to Arduino in port\n')
+                        localize('Could not talk to Zubi Flyer in port\n')
                         + port + '\n\n' + localize('Check if firmata is loaded.')
                         );
 
