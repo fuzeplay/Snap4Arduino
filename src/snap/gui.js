@@ -200,7 +200,6 @@ IDE_Morph.prototype.scriptsTexture = function () {
 
 // IDE_Morph.prototype.setDefaultDesign();
 //Set the flat design by default
-IDE_Morph.prototype.setFlatDesign();
 
 // IDE_Morph instance creation:
 
@@ -2179,11 +2178,14 @@ IDE_Morph.prototype.applySavedSettings = function () {
         autoWrapping = this.getSetting('autowrapping');
 
     // design
-    if (design === 'flat') {
-        this.setFlatDesign();
-    } else {
-        this.setDefaultDesign();
-    }
+    // if (design === 'flat') {
+    //     this.setFlatDesign();
+    // } else {
+    //     this.setDefaultDesign();
+    // }
+
+    //Set Flat Design by default
+    this.setFlatDesign();
 
     // blocks zoom
     if (zoom) {
