@@ -2882,9 +2882,9 @@ IDE_Morph.prototype.settingsMenu = function () {
         'Flat design',
         function () {
             if (MorphicPreferences.isFlat) {
-                return myself.defaultDesign();
+                myself.flatDesign();
             }
-            myself.flatDesign();
+            return myself.defaultDesign();
         },
         MorphicPreferences.isFlat,
         'uncheck for default\nGUI design',
