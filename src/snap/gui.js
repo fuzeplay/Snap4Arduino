@@ -198,7 +198,9 @@ IDE_Morph.prototype.scriptsTexture = function () {
     return pic;
 };
 
-IDE_Morph.prototype.setDefaultDesign();
+// IDE_Morph.prototype.setDefaultDesign();
+//Set the flat design by default
+IDE_Morph.prototype.setFlatDesign();
 
 // IDE_Morph instance creation:
 
@@ -2882,9 +2884,9 @@ IDE_Morph.prototype.settingsMenu = function () {
         'Flat design',
         function () {
             if (MorphicPreferences.isFlat) {
-                myself.flatDesign();
+                return myself.defaultDesign();
             }
-            return myself.defaultDesign();
+            myself.flatDesign();
         },
         MorphicPreferences.isFlat,
         'uncheck for default\nGUI design',
