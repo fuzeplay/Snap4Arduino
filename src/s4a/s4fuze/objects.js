@@ -272,7 +272,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             function () {
                 myself.arduino.attemptConnection();
             },
-            'Connect Zubi'
+            'Connect Zubi Flyer'
             );
 
     //  Button that triggers a disconnection from board
@@ -282,7 +282,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             function () {
                 myself.arduino.disconnect();;
             },
-            'Disconnect Zubi'
+            'Disconnect Zubi Flyer'
             );
 
     function arduinoWatcherToggle (selector) {
