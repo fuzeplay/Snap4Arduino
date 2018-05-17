@@ -1386,7 +1386,7 @@ function SpriteMorph(globals) {
 }
 
 SpriteMorph.prototype.init = function (globals) {
-    this.name = localize('Sprite');
+    this.name = localize('FuzePlay');
     this.instrument = null;
     this.variables = new VariableFrame(globals || null, this);
     this.scripts = new ScriptsMorph();

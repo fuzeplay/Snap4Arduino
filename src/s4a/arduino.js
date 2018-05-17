@@ -332,7 +332,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
                 myself.hideMessage();
                 myself.board.getArduinoBoardParam = nop;
 
-                ide.inform(myself.owner.name, localize('A Zubi Flyer board has been connected. Happy prototyping!'));
+                ide.inform(myself.owner.name, localize('Your Zubi Flyer is Connected!'));
             } else {
                 fail(err);
             }
