@@ -1,5 +1,18 @@
 # CHANGELOG
 
+### 1.0
+
+* Resetting version number as this is a new fork of Snap4Arduino called Snap4Fuze
+* Replaced Arduino blocks with Zubi Flyer specific blocks
+* Added Zubi sprites
+* Load Zubi sprites by default
+* Changed "Arduino" to "Zubi Flyer" in relevent areas
+* Set Flat Design as the default
+* Modified extension to work with ZubiFirmata, a fork of Firmata with Zubi specific features
+* Updated logos, links, ect
+* Thank you to the amazing people at Snap4Arduino and Snap that made this possible
+* 
+
 ### 1.2.3
 
 * Experimental mobile version for Android tablets that uses serial over Blueetooth
