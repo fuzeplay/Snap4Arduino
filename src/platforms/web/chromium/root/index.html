@@ -27,6 +27,7 @@
         <script type="text/javascript" src="plugin/objects.js"></script>
         <script type="text/javascript" src="gui.js"></script>
         <script type="text/javascript" src="s4a/gui.js"></script>
+        <script type="text/javascript" src="s4a/s4fuze/gui.js"></script>
         <script type="text/javascript" src="plugin/gui.js"></script>
         <script type="text/javascript" src="paint.js"></script>
         <script type="text/javascript" src="lists.js"></script>
@@ -70,6 +71,10 @@
                         box.inform(title, message, world)
                     }
                 };
+
+                //Probably shouldn't be here, but this works for now.
+                //Load custom fuze costumes and set the default Sprite logo
+                ide.loadFuzeCostumes();
 
                 setInterval(loop, 1);
             };
