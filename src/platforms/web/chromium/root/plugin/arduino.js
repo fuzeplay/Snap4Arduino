@@ -16,7 +16,7 @@ Arduino.prototype.attemptConnection = function () {
                 portMenu.popUpAtHand(world);
             });
         } else {
-            ide.inform(myself.name, localize('There is already a board connected to this sprite'));
+            ide.inform("Zubi Flyer", localize('There is already a board connected to this sprite'));
         }
     }
 
@@ -66,7 +66,7 @@ Arduino.prototype.connect = function (port) {
                             myself.board.connected = true;
 
                             myself.hideMessage();
-                            ide.inform(myself.owner.name, localize('Your Zubi Flyer is Connected!'));
+                            ide.inform("Zubi Flyer", localize('Your Zubi Flyer is Connected!'));
                         }
                     });
 
@@ -75,7 +75,7 @@ Arduino.prototype.connect = function (port) {
                         myself.board = null;
                         myself.hideMessage();
                         ide.inform(
-                                myself.owner.name,
+                                "Zubi Flyer",
                                 localize('Could not talk to Zubi Flyer in port\n')
                                 + port + '\n\n' + localize('Check if firmata is loaded.')
                                 );

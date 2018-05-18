@@ -50,7 +50,7 @@ Arduino.prototype.disconnect = function (silent, force) {
         this.closeHandler(silent);
     } else {
         if (!silent) {
-            ide.inform(this.owner.name, localize('Board is not connected'))
+            ide.inform("Zubi Flyer", localize('Board is not connected'))
         }
     } 
 };
@@ -74,7 +74,7 @@ Arduino.prototype.showMessage = function (msg) {
 
     if (!this.message.key) { this.message.key = 'message' + this.owner.name + msg };
 
-    this.message.labelString = this.owner.name;
+    this.message.labelString = "Zubi Flyer";
     this.message.createLabel();
     if (msg) { this.message.addBody(txt) };
     this.message.drawNew();
@@ -128,7 +128,7 @@ Arduino.prototype.attemptConnection = function () {
                 }
             });
         } else {
-            ide.inform(myself.name, localize('There is already a board connected to this sprite'));
+            ide.inform("Zubi Flyer", localize('There is already a board connected to this sprite'));
         }
     }
 
@@ -160,13 +160,13 @@ Arduino.prototype.closeHandler = function (silent) {
 
     if (this.gotUnplugged & !silent) {
         ide.inform(
-                this.owner.name,
+            "Zubi Flyer",
                 localize('Board was disconnected from port\n') 
                 + portName 
                 + '\n\nIt seems that someone pulled the cable!');
         this.gotUnplugged = false;
     } else if (!silent) {
-        ide.inform(this.owner.name, localize('Board was disconnected from port\n') + portName);
+        ide.inform("Zubi Flyer", localize('Board was disconnected from port\n') + portName);
     }
 };
 
@@ -177,7 +177,7 @@ Arduino.prototype.disconnectHandler = function () {
 
 Arduino.prototype.errorHandler = function (err) {
     ide.inform(
-            this.owner.name,
+        "Zubi Flyer",
             localize('An error was detected on the board\n\n')
             + err,
             this.disconnect(true));
@@ -276,19 +276,19 @@ Arduino.prototype.connect = function (port, verify, channel) {
 
         if (err.code === 'EHOSTUNREACH') {
             ide.inform(
-                myself.owner.name, 
+                "Zubi Flyer",
                 localize('Unable to connect to board\n')
                     + myself.hostname + '\n\n'
                     + localize('Make sure the board is powered on'));
         } else if (err.code === 'ECONNREFUSED') {
             ide.inform(
-                myself.owner.name,
+                "Zubi Flyer",
                 localize('Unable to connect to board\n')
                     + myself.hostname + '\n\n'
                     + localize('Make sure the hostname and port are correct'));
         } else {
             ide.inform(
-                myself.owner.name,
+                "Zubi Flyer",
                 localize('Error connecting the board.') + ' ' + err);
         }
 
@@ -332,7 +332,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
                 myself.hideMessage();
                 myself.board.getArduinoBoardParam = nop;
 
-                ide.inform(myself.owner.name, localize('Your Zubi Flyer is Connected!'));
+                ide.inform("Zubi Flyer", localize('Your Zubi Flyer is Connected!'));
             } else {
                 fail(err);
             }
@@ -347,7 +347,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
 
                 myself.hideMessage();
                 ide.inform(
-                        myself.owner.name,
+                        "Zubi Flyer",
                         localize('Could not talk to Zubi Flyer in port\n')
                         + port + '\n\n' + localize('Check if firmata is loaded.')
                         );
