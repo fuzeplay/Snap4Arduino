@@ -1,10 +1,10 @@
 {
     "main": "index.html",
     "version": "override_me",
-    "name": "Snap4AFuze",
-    "description": "Snap4AFuze",
+    "name": "Snap4Fuze",
+    "description": "Snap4Fuze",
     "window": {
-        "title": "Snap4AFuze",
+        "title": "Snap4Fuze",
         "icon": "s4a/icon-128.png",
         "frame": true,
         "position": "center",

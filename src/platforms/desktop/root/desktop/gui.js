@@ -66,7 +66,7 @@ IDE_Morph.prototype.newProject = function () {
 IDE_Morph.prototype.checkForNewVersion = function () {
     var myself = this;
     this.getURL(
-        'https://api.github.com/repos/bromagosa/Snap4Arduino/releases/latest',
+        'https://api.github.com/repos/fuzeplay/Snap4Fuze/releases/latest',
         function (response) {
             var currentName = myself.version(),
                 current = currentName.split('.'),
