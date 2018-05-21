@@ -1,10 +1,10 @@
 {
     "main": "index.html",
     "version": "override_me",
-    "name": "Snap4Arduino",
-    "description": "Snap4Arduino",
+    "name": "Snap4AFuze",
+    "description": "Snap4AFuze",
     "window": {
-        "title": "Snap4Arduino",
+        "title": "Snap4AFuze",
         "icon": "s4a/icon-128.png",
         "frame": true,
         "position": "center",
@@ -20,26 +20,21 @@
     "licenses": [
         {
             "type": "AGPLv2",
-            "url": "https://raw.githubusercontent.com/bromagosa/Snap4Arduino/master/LICENSE"
+            "url": "https://github.com/fuzeplay/Snap4Fuze/master/LICENSE"
         }
     ],
     "maintainers":[
         {
-            "name": "Bernat Romagosa",
-            "email": "bernat@snap4arduino.rocks",
-            "web": "http://romagosa.work"
-        },
-        {
-            "name": "Joan Guillén",
-            "email": "jguille2@xtec.cat",
-            "web": "https://github.com/jguille2"
+            "name": "Jordan Rejaud",
+            "email": "kyle@fuzeplay.io",
+            "web": "https://github.com/jrejaud"
         }
 
     ],
     "repositories": [
        {
             "type": "git", 
-            "url": "https://github.com/bromagosa/Snap4Arduino.git"
+            "url": "https://github.com/fuzeplay/Snap4Fuze.git"
        }
     ],
     "chromium-args": "--disable-raf-throttling"
