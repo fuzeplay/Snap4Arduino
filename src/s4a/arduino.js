@@ -329,6 +329,7 @@ Arduino.prototype.connect = function (port, verify, channel) {
                     myself.board.connected = true;
                 }
 
+                myself.addFuzeMethods();
                 myself.hideMessage();
                 myself.board.getArduinoBoardParam = nop;
 
