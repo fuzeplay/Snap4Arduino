@@ -49,7 +49,6 @@ loadCostume = function(imageURL, imageName) {
 
 //Load Fuze costumes right off the bat
 IDE_Morph.prototype.loadFuzeCostumes = function() {
-
     this.addCostumeToSprite("Costumes/bot_radio.png", "Fuze Bot Radio");
     this.addCostumeToSprite("Costumes/bot_standing.png", "Fuze Bot Standing");
     this.addCostumeToSprite("Costumes/catch_the_light.png", "Fuze Catch the Light", true);
@@ -57,6 +56,4 @@ IDE_Morph.prototype.loadFuzeCostumes = function() {
     this.addCostumeToSprite("Costumes/paints.png", "Fuze Paints");
     this.addCostumeToSprite("Costumes/see_stars.png", "Fuze see Stars");
     this.addCostumeToSprite("Costumes/shock_and_aew.png", "Fuze Shock and Awe");
-
-    this.spriteBar.tabBar.tabTo('costumes');
 };
